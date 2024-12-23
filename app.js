@@ -28,99 +28,46 @@ app.get('/generate-png', async (req, res) => {
         res.status(400).send('Query for quote is missing.'); 
     }
 
-  const content = `<!DOCTYPE html>
-  <html lang="en">
+  const content = `
+  <!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LinkedIn Post</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #052431;
-      }
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 1000px;
-        height: 1000px;
-        background-color: #052431;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        padding: 24px;
-        box-sizing: border-box;
-      }
-      .content {
-        display: flex;
-        flex-direction: column;
-      }
-      .profile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 64px;
-      }
-      .profile img {
-        height: 144px;
-        width: 144px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 2px solid white;
-      }
-      .profile-details {
-        margin-left: 20px;
-      }
-      .profile-details .name {
-        color: white;
-        font-weight: bold;
-        font-size: 40px;
-        margin-top: 12px;
-      }
-      .profile-details .tagline {
-        color: #A0AEC0;
-        font-size: 24px;
-        margin-bottom: 16px;
-      }
-      .quote {
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-      }
-      .quote-text {
-        color: white;
-        width: 500px;
-        word-break: break-word;
-        font-size: 40px;
-        line-height: 1.5;
-        margin: 0 auto;
-      }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="content">
-        <div class="profile">
-          <img src="https://media.licdn.com/dms/image/v2/D4E03AQE3WpirQLWcwA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728316490982?e=1740009600&v=beta&t=FGFjKsheaOaiXoLOGA2-eVQ5gSA9O9aqiQSewM87CEY" alt="Profile Picture">
-          <div class="profile-details">
-            <div class="name">Muqeet Mughal</div>
-            <div class="tagline">Tailored ERP & Software Solutions</div>
+    <div
+      class="flex justify-center items-center h-screen bg-[#052431] shadow-md overflow-hidden p-6 box-border"
+    >
+      <div class="flex flex-col">
+        <div class="flex justify-center items-center mb-16">
+          <img
+            class="h-36 w-36 object-cover rounded-full border-2 border-white"
+            src="https://media.licdn.com/dms/image/v2/D4E03AQE3WpirQLWcwA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728316490982?e=1740009600&v=beta&t=FGFjKsheaOaiXoLOGA2-eVQ5gSA9O9aqiQSewM87CEY"
+            alt="Profile Picture"
+          />
+          <div class="ml-5">
+            <div class="text-white font-bold text-5xl mt-3">Muqeet Mughal</div>
+            <div class="text-gray-400 text-2xl mb-4">
+              Tailored ERP & Software Solutions
+            </div>
           </div>
         </div>
-        <div class="quote">
-          <div class="quote-text">${query.quote}</div>
+        <div class="flex-grow flex flex-col justify-center text-center">
+          <div
+            class="text-white px-5 break-words text-5xl leading-relaxed mx-auto"
+          >
+            ${query.quote}
+          </div>
         </div>
       </div>
-    </div>
+      <div class="w-full border-4 bottom-40 absolute "></div>
+      </div>
   </body>
-  </html>`;
+</html>
+  `;
 
   const outputPath = 'output.png';
 
