@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5690:5690" # Map container port 5690 to host port 5690
+    volumes:
+      - .:/app # Mount the current directory to /app in the container
+      - /app/node_modules # Prevent overwriting node_modules with host data
+    command: ["npm", "start"]
+    restart: always
